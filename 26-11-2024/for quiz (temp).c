@@ -1,6 +1,6 @@
 #include <stdio.h>
 
-int main() {
+int main() { // by Llego, Francis
     int letterCode;
     float letterWeight, cost;
     while (1) {
