@@ -1,6 +1,6 @@
 #include <stdio.h>
 
-int main() {
+int main() { // Maenard Rafael Lagahit
     int number, i, sum, repeat = 1;
     
     while (repeat) {

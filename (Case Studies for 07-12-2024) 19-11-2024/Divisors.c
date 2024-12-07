@@ -1,7 +1,6 @@
-
 #include <stdio.h>
 
-int main() {
+int main() { // James Patrick Isidro
     int N;
     int divisor;
     int sum;

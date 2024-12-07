@@ -1,6 +1,6 @@
 #include <stdio.h>
 
-int factorial(int n) {
+int factorial(int n) { // Francis Loise Llego
     int n2 = 1, finalN;
     for (int i = 1; i <= n; i++) {
         n2 *= i;
