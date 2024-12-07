@@ -10,7 +10,7 @@ int main() { // James Patrick Isidro
     printf("Input a number: ");
     scanf("%d", &N);
     
-    
+    printf("Proper divisors are: ");
     for (int i = 1; i < N; i++) {
 
         if (N % i == 0) {
@@ -20,7 +20,8 @@ int main() { // James Patrick Isidro
     
     }
     
-     printf("\nSum: %d", sum);
+   
+     printf("\nSum of proper divisors: %d", sum);
      
      if (sum < N) {
          printf("\n%d < %d DEFICIENT", sum, N);
@@ -36,6 +37,7 @@ int main() { // James Patrick Isidro
      
      printf("\nDo you want to do it again? Press 1 if yes and 0 if no.");
      scanf("%d", &decide);
+     N = 0, divisor = 0, sum = 0;
     } while (decide == 1);
     
     printf("Program terminated.");
