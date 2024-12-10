@@ -1,17 +1,31 @@
 #include <stdio.h>
+// #include <conio.h>
 
 int main() { // James Patrick Isidro
+
+    //Declaration of variables used in the program.
     int N;
     int divisor;
     int sum;
     int decide;
     
-    do {
-    printf("Input a number: ");
-    scanf("%d", &N);
+    printf("CASE STUDY 2: This program determines the proper divisors of a number, the sum of it, and if it is deficient, perfect, or abundant.");
+    //Loop used to ask the user if they want to try again the program.
+    do { 
+    N = 0, divisor = 0, sum = 0; //Resetting the value of the variables.
+    printf("\nInput a positive number: ");
+    //Checks if the value inputted by the user is a positive and valid value.
+    if (scanf("%d", &N) != 1 || N <= 0) { 
+        printf("Invalid Input! Please enter a positive number only. ");
+        
+        //Clears the input buffer.
+        while (getchar() != '\n');
+        break;
+    }
     
     printf("Proper divisors are: ");
-    for (int i = 1; i < N; i++) {
+    //Loop that determines the proper divisors.
+    for (int i = 1; i < N; i++) { 
 
         if (N % i == 0) {
         printf("%d ", i);
@@ -22,72 +36,33 @@ int main() { // James Patrick Isidro
     
    
      printf("\nSum of proper divisors: %d", sum);
-     
+     //Checking the value of sum relative to the value of number inputted.
      if (sum < N) {
-         printf("\n%d < %d DEFICIENT", sum, N);
+         printf("\n%d < %d is DEFICIENT", sum, N);
      }
      
      else if (sum == N) {
-         printf("\n%d = %d PERFECT", sum, N);
+         printf("\n%d = %d is PERFECT", sum, N);
      }
      
      else if (sum > N) {
-         printf("\n%d > %d ABUNDANT", sum, N);
+         printf("\n%d > %d is ABUNDANT", sum, N);
      }
      
-     printf("\nDo you want to do it again? Press 1 if yes and 0 if no.");
+     //Asks the user if they want to try again.
+     printf("\nDo you want to do it again? Press 1 (yes) or 0 (no): ");
      scanf("%d", &decide);
-     N = 0, divisor = 0, sum = 0;
+     
+     //Activates when the user inputted values other than 1 and 0.
+     if (decide != 1 && decide != 0) {
+         printf("Please enter 1 and 0 only. Do you want to try again? 1 (yes) or 0 (no): ");
+         scanf("%d", &decide);
+     }
+     
     } while (decide == 1);
     
+    //Message that indicates program termination.
     printf("Program terminated.");
     
-     
-     
-    
-    
-
     return 0;
 }
-
-/* #include <stdio.h>
-
-int main() {
-    int num, divisorsSum;
-
-    while (1) {
-        printf("Enter a num: ");
-        scanf("%d", &num);
-
-        printf("List of Proper Divisors: ");
-        for (int i = 1; i < num; i++)  {
-            if (num % i == 0) {
-                printf("%d ", i);
-            divisorsSum += i;
-            }
-        }
-
-        printf("Sum of Proper Divisors: %d", divisorsSum);
-
-        if (divisorsSum < num) {
-            printf("\n%d < %d is DEFICIENT", divisorsSum, num);
-        } else if (divisorsSum > num) {
-            printf("\n%d > %d is ABUNDANT", divisorsSum, num);
-        } else if (divisorsSum == num) {
-            printf("\n%d == %d is PERFECT", divisorsSum, num);
-        }
-
-        getchar();
-        char repeat;
-        printf("\n\nDo you want to repeat the process? Y or N ");
-        scanf("%c", &repeat);
-        if (repeat == 'Y' || repeat == 'y') {
-            num = 0, divisorsSum = 0;
-        } else {
-            break;
-        }
-    }
-    
-
-    return 0;
-} */
