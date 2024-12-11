@@ -5,20 +5,22 @@
 int main() {
     int repIndex = 0; // keeping track of repetition
     while (1) {
-    if (repIndex >= 1) { // if invalid input got triggered, this message will be printed first
+    if (repIndex >= 1) { // Input Invalidation Sequence
         printf("Invalid input. Please try again!\n");
         repIndex = 0;
     }
     printf("CASE STUDY 1: This program shows the factorial of a number from the user input.\n\n");
-        int n;        
+        int n;
+        char inputBuff[255]; // input buffer
+        char* end = NULL; // pointer for strtol, nothing is stored yet
         printf("Enter a number: ");
-        // checking if the user input was a letter or number (1 = num, 0 = letter)
-        if (scanf("%d", &n) != 1 || n < 0) {
-            repIndex++; // set to 1 when invalid input
-            system("cls"); // clear the console
-            while (getchar() != '\n'); // clear input buffer to avoid infinite loops
-            continue; // skip this iteration and move to the next, asking for user input again
-        }
+        fgets(inputBuff, sizeof(inputBuff), stdin); // store the input to the inputBuffer
+        n = strtol(inputBuff, &end, 10); // find any characters from the inputBuff (non-numeric characters), store them to &end, and store integers to n
+        if (end == inputBuff || *end != '\n' || n < 0) { // if integer wasn't the first thing read or characters after integer or decimal value of n is negative, run input invalidation sequence
+            repIndex++; // trigger the invalidation sequence
+            system("cls"); // clear the console screen
+            continue; // skip this iteration
+        } // if input is valid, proceed with the factorial calculation and output
         
             unsigned long long int n2 = 1; // to handle very large positive integers
             printf("\n\nN = %d\n", n);
@@ -34,12 +36,12 @@ int main() {
             
             printf("\nN = %llu", n2); // prints the factorial number in unsigned long long int
 
-            getchar(); // prevents the first scanf mixing with the second one
             char repeat;
             printf("\n\nDo you want to repeat the process? Y or N "); // repeat section
             scanf("%c", &repeat);
             if (repeat == 'Y' || repeat == 'y') {
                 system("cls");
+                getchar();
             } else {
                 printf("\n\n\nPress any key to continue...");
                 getch(); // to exit the program
