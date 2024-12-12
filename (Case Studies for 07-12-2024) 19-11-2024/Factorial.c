@@ -25,7 +25,9 @@ int main() {
             unsigned long long int n2 = 1; // to handle very large positive integers
             printf("\n\nN = %d\n", n);
             printf("N! = ");
-            for (int i = 1; i <= n; i++) { // increase i until n
+            int factorialOverflowCheck = 0;
+            int i = 1;
+            for (; i <= n; i++) { // increase i until n
                 n2 *= i; // n2 = n2 * i, multiply n2 to i (1*1, 1*2, 2*3, 6*4, 24*5, ...)
                 if (i == n) { // print all values used (1 x 2 x 3 x ...)
                     printf("%d", i);
@@ -33,23 +35,26 @@ int main() {
                     printf("%d x ", i);
                 }
             }
+            if (n2 > ULLONG_MAX / i || n > 65) { // overflow check, if the final value exceeds the maximum 64-bit integer
+                printf("\n\nFactorial of %d exceeds the 64-bit integer limit!", n);
+                factorialOverflowCheck = 1;
+            }
             
-            printf("\nN = %llu", n2); // prints the factorial number in unsigned long long int
+            if (factorialOverflowCheck != 1) {
+                printf("\nN = %llu", n2); // prints the factorial number in unsigned long long int
+            }
 
             char repeat;
             printf("\n\nDo you want to repeat the process? Y or N "); // repeat section
-            scanf("%c", &repeat);
+            repeat = getch(); // User enters the char without needing to wait for the enter key
             if (repeat == 'Y' || repeat == 'y') {
                 system("cls");
-                getchar();
             } else {
-                printf("\n\n\nPress any key to continue...");
+                printf("\n\n\nPress any key to exit...");
                 getch(); // to exit the program
                 break;
             }
     }
-    
     return 0;
 }
-
-// Made by Francis Llego from Group 17 BSIT 1-1
+// Made by Francis Loise M. Llego from Group 17 BSIT 1-1

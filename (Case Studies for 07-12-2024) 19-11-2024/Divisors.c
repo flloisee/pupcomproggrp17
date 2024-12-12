@@ -1,42 +1,40 @@
 #include <stdio.h>
-// #include <conio.h>
 
-int main() { // James Patrick Isidro
 
+int main() {
+    
     //Declaration of variables used in the program.
     int N;
     int divisor;
     int sum;
     int decide;
-    
-    printf("CASE STUDY 2: This program determines the proper divisors of a number, the sum of it, and if it is deficient, perfect, or abundant.");
-    //Loop used to ask the user if they want to try again the program.
-    do { 
+   
+    printf("CASE STUDY 2: A program that determines the proper divisors of a number, the sum of it, and if it is deficient, perfect, or abundant.");
+    //Loop used to ask the user if they want to try the program again.
+
+
+    do {
     N = 0, divisor = 0, sum = 0; //Resetting the value of the variables.
     printf("\nInput a positive number: ");
     //Checks if the value inputted by the user is a positive and valid value.
-    if (scanf("%d", &N) != 1 || N <= 0) { 
+    if (scanf("%d", &N) != 1 || N <= 0) {
         printf("Invalid Input! Please enter a positive number only. ");
-        
-        //Clears the input buffer.
-        while (getchar() != '\n');
         break;
     }
-    
+   
     printf("Proper divisors are: ");
     //Loop that determines the proper divisors.
-    for (int i = 1; i < N; i++) { 
+    for (int i = 1; i < N; i++) {
+
 
         if (N % i == 0) {
         printf("%d ", i);
         sum = sum + i;
         }
-    
-    }
-    
    
+    }
      printf("\nSum of proper divisors: %d", sum);
-     //Checking the value of sum relative to the value of number inputted.
+     //Checking the value of sum relative to the value of the number inputted.
      if (sum < N) {
          printf("\n%d < %d is DEFICIENT", sum, N);
      }
@@ -60,9 +58,12 @@ int main() { // James Patrick Isidro
      }
      
     } while (decide == 1);
-    
+   
     //Message that indicates program termination.
     printf("Program terminated.");
-    
+   
     return 0;
 }
+
+
+// Programmed and Designed by James Patrick M. Isidro from Group 17 BSIT 1-1
