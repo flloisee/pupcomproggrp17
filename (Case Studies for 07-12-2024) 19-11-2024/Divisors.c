@@ -20,7 +20,7 @@ int main() {
     if (scanf("%d", &N) != 1 || N <= 0) {
         printf("Invalid Input! Please enter a positive number only. ");
         break;
-    }
+    } 
    
     printf("Proper divisors are: ");
     //Loop that determines the proper divisors.
